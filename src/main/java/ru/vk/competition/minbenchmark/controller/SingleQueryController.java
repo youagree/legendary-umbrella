@@ -69,7 +69,7 @@ public class SingleQueryController {
         return;
     }
 
-    @GetMapping("/get-single-query-by-id/{id}?resultId=id")
+    @GetMapping("/get-single-query-by-id/{id}")
     public AddNewQueryDto getSingleQueryById(@PathVariable Integer id, @RequestParam Integer resultId) {
         return new AddNewQueryDto();
     }
