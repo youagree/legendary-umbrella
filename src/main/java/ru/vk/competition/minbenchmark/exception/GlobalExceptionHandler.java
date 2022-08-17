@@ -17,9 +17,27 @@ public class GlobalExceptionHandler {
        log.info("exception from EXCEPTION HANDLER " + ex.getMessage(), ex.getCause(), ex.getStackTrace());
     }
 
-    @ExceptionHandler({QueryNotFoundException.class})
+    @ExceptionHandler({NotAcceptException.class})
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    public void handleRfidAccessDeniedException(NotAcceptException ex) {
+        log.info("exception from EXCEPTION HANDLER " + ex.getMessage(), ex.getCause(), ex.getStackTrace());
+    }
+
+    @ExceptionHandler({BadRequestException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public void handleRfidAccessDeniedException(BadRequestException ex) {
+        log.info("exception from EXCEPTION HANDLER " + ex.getMessage(), ex.getCause(), ex.getStackTrace());
+    }
+
+    @ExceptionHandler({InternalServerErrorException.class})
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
-    public void handleRfidAccessDeniedException(QueryNotFoundException ex) {
+    public void handleRfidAccessDeniedException(InternalServerErrorException ex) {
+        log.info("exception from EXCEPTION HANDLER " + ex.getMessage(), ex.getCause(), ex.getStackTrace());
+    }
+
+    @ExceptionHandler({AddNewQueryResultException.class})
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public void handleRfidAccessDeniedException(AddNewQueryResultException ex) {
         log.info("exception from EXCEPTION HANDLER " + ex.getMessage(), ex.getCause(), ex.getStackTrace());
     }
 
