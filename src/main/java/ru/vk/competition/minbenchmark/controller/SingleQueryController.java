@@ -2,9 +2,11 @@ package ru.vk.competition.minbenchmark.controller;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.http.ResponseEntity;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-import ru.vk.competition.minbenchmark.entity.SingleQuery;
+import ru.vk.competition.minbenchmark.dto.AddNewQueryDto;
+import ru.vk.competition.minbenchmark.dto.AddNewQueryResultRequest;
+import ru.vk.competition.minbenchmark.dto.GetAllSingleQueriesDto;
 import ru.vk.competition.minbenchmark.service.SingleQueryService;
 
 import java.util.List;
@@ -17,33 +19,64 @@ public class SingleQueryController {
 
     private final SingleQueryService singleQueryService;
 
-    @GetMapping("/get-all-single-queries")
-    public List<SingleQuery> getAllTableQueries() {
-        return singleQueryService.getAllQueries();
-    }
-
-    @GetMapping("/get-single-query-by-id/{id}")
-    public SingleQuery getTableQueryById(@PathVariable Integer id) {
-        return singleQueryService.getQueryById(id);
-    }
-
-    @DeleteMapping("/delete-single-query-by-id/{id}")
-    public ResponseEntity<Void> deleteTableQueryById(@PathVariable Integer id) {
-        return singleQueryService.deleteQueryById(id);
+    @GetMapping("/add-new-query-result")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void addNewQueryResult(@RequestBody AddNewQueryResultRequest addNewQueryResultRequest) {
+        //todo code 400 or 202
+        return;
     }
 
     @PostMapping("/add-new-query")
-    public ResponseEntity<Void> addNewQueryToTable(@RequestBody SingleQuery singleQuery) {
-        return singleQueryService.addQueryWithQueryId(singleQuery);
+    public void addNewQuery(@RequestParam Integer resultId,
+                                  @RequestBody AddNewQueryDto addNewQueryDto) {
+        // TODO: 400 or 201
+        return;
+    }
+
+    @PostMapping("/add-modify-result")
+    public void addModifyResult(@PathVariable AddNewQueryResultRequest addNewQueryResultRequest) {
+        return;
     }
 
     @PutMapping("/modify-single-query")
-    public ResponseEntity<Void> modifyQueryInTable(@RequestBody SingleQuery singleQuery) {
-        return singleQueryService.updateQueryWithQueryId(singleQuery);
+    public void modifySingleQuery(@RequestParam Integer resultId,
+                                  @RequestBody AddNewQueryDto addNewQueryDto) {
+        return;
+    }
+
+    @PostMapping("/add-delete-result")
+    public void addDeleteResult(@RequestBody AddNewQueryResultRequest addNewQueryResultRequest) {
+        return;
+    }
+
+    @DeleteMapping("/delete-single-query-by-id/{id}")
+    public void deleteSingleQueryById(@PathVariable Integer id, @RequestParam Integer resultId) {
+        return;
+    }
+
+    @PostMapping("/add-execute-result")
+    public void addExecuteResult(@RequestBody AddNewQueryResultRequest addNewQueryResultRequest) {
+
     }
 
     @GetMapping("/execute-single-query-by-id/{id}")
-    public void executeSingleQueryById(@PathVariable Integer id) {
-        singleQueryService.executeSingleQuery(id);
+    public void executeSingleQueryById(@PathVariable Integer id, @RequestParam Integer resultId){
+
     }
+
+    @PostMapping("/add-get-single-query-by-id-result")
+    public void addGetSingleQueryByIdResult(@RequestBody AddNewQueryResultRequest addNewQueryResultRequest) {
+        return;
+    }
+
+    @GetMapping("/get-single-query-by-id/{id}?resultId=id")
+    public AddNewQueryDto getSingleQueryById(@PathVariable Integer id, @RequestParam Integer resultId) {
+        return new AddNewQueryDto();
+    }
+
+    @GetMapping("/get-all-single-queries")
+    public GetAllSingleQueriesDto getAllSingleQueries() {
+        return null;
+    }
+
 }

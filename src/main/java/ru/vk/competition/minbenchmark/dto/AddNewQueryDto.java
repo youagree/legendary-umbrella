@@ -1,10 +1,11 @@
-package ru.vk.competition.minbenchmark.dto.query;
+package ru.vk.competition.minbenchmark.dto;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 public class AddNewQueryDto {
     private Integer queryId;
-    private String tableName;
     private String query;
 }
