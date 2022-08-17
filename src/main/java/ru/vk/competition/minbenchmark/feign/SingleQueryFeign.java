@@ -1,5 +1,9 @@
 package ru.vk.competition.minbenchmark.feign;
 
-@Feign
+import org.springframework.cloud.openfeign.FeignClient;
+
+@FeignClient
 public class SingleQueryFeign {
+
+
 }
