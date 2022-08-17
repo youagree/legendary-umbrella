@@ -28,25 +28,26 @@ public class SingleQueryController {
 
     @PostMapping("/add-new-query")
     public void addNewQuery(@RequestParam Integer resultId,
-                                  @RequestBody AddNewQueryDto addNewQueryDto) {
+                            @RequestBody AddNewQueryDto addNewQueryDto) {
         // TODO: 400 or 201
         return;
     }
 
     @PostMapping("/add-modify-result")
-    public void addModifyResult(@PathVariable AddNewQueryResultRequest addNewQueryResultRequest) {
-        return;
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public void addModifyResult(@RequestBody AddNewQueryResultRequest addNewQueryResultRequest) {
+        singleQueryService.addModifyResult(addNewQueryResultRequest);
     }
 
     @PutMapping("/modify-single-query")
     public void modifySingleQuery(@RequestParam Integer resultId,
                                   @RequestBody AddNewQueryDto addNewQueryDto) {
-        return;
+        singleQueryService.modifySingleQuery(resultId, addNewQueryDto);
     }
 
     @PostMapping("/add-delete-result")
     public void addDeleteResult(@RequestBody AddNewQueryResultRequest addNewQueryResultRequest) {
-        return;
+       singleQueryService.addDeleteResult(addNewQueryResultRequest);
     }
 
     @DeleteMapping("/delete-single-query-by-id/{id}")
